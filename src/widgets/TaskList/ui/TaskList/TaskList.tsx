@@ -1,8 +1,9 @@
-import { TaskCard } from "entities/Task/ui/TaskCard.tsx";
-import cn from "./TaskList.module.css";
-import useTasks from "widgets/TaskList/model/useTasks.ts";
-import { TaskFilter } from "widgets/TaskList/ui/TaskFilter/TaskFilter.tsx";
+import { TaskCard } from "entities/Task";
+import { TaskFilter } from "../TaskFilter/TaskFilter.tsx";
 import { MOCK_TASKS } from "entities/Task/__mock__/mockTasks.ts";
+import { useTasks } from "../../model/useTasks.ts";
+
+import cn from "./TaskList.module.css";
 
 export function TaskList() {
   const { tasks, removeTask, filter, setFilter } = useTasks(MOCK_TASKS);
@@ -14,10 +15,11 @@ export function TaskList() {
       {tasks.map(({ id, title, completed }) => {
         return (
           <TaskCard
+            id={id}
             key={id}
             title={title}
             completed={completed}
-            onRemove={() => removeTask(id)}
+            onRemove={removeTask}
           />
         );
       })}
