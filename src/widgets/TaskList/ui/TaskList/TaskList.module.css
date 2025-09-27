@@ -1,0 +1,13 @@
+.container {
+    width: 500px;
+    height: 100%;
+
+    display: grid;
+    gap: 4px;
+}
+
+
+.filter {
+    display: flex;
+    gap: 4px;
+}
