@@ -1,13 +1,11 @@
-import { TaskCard, useGetTasksQuery } from "entities/Task";
+import { TaskCard } from "entities/Task";
 import { TaskFilter } from "../TaskFilter/TaskFilter.tsx";
 import { useTasks } from "../../model/useTasks.ts";
 
 import cn from "./TaskList.module.css";
 
 export function TaskList() {
-  const { data = [] } = useGetTasksQuery();
-
-  const { tasks, removeTask, filter, setFilter } = useTasks(data);
+  const { tasks, removeTask, filter, setFilter } = useTasks();
 
   return (
     <div className={cn.container}>

@@ -1,9 +1,11 @@
 import { useState, useMemo, useCallback, useEffect } from "react";
-import { type Tasks } from "entities/Task";
+import { useGetTasksQuery } from "entities/Task";
 
 export type Filter = "all" | "completed" | "incomplete";
 
-export function useTasks(initialTasks: Tasks) {
+export function useTasks() {
+  const { data: initialTasks = [] } = useGetTasksQuery();
+
   const [tasks, setTasks] = useState(initialTasks);
   const [filter, setFilter] = useState<Filter>("all");
 
