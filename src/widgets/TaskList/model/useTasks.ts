@@ -1,11 +1,17 @@
-import { useState, useMemo, useCallback } from "react";
-import type { Tasks } from "entities/Task";
+import { useState, useMemo, useCallback, useEffect } from "react";
+import { useGetTasksQuery } from "entities/Task";
 
 export type Filter = "all" | "completed" | "incomplete";
 
-export function useTasks(initial: Tasks) {
-  const [tasks, setTasks] = useState(initial);
+export function useTasks() {
+  const { data: initialTasks = [] } = useGetTasksQuery();
+
+  const [tasks, setTasks] = useState(initialTasks);
   const [filter, setFilter] = useState<Filter>("all");
+
+  useEffect(() => {
+    setTasks(initialTasks);
+  }, [initialTasks]);
 
   /* Добавил в TASK-1*/
   const filteredTasks = useMemo(() => {
