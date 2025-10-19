@@ -23,7 +23,6 @@ export function RegisterPage() {
   });
 
   const onSubmit: SubmitHandler<RegisterFormData> = async (data) => {
-    console.log(data);
     await new Promise((resolve) => setTimeout(resolve, 1000));
     navigate("/tasks");
   };
