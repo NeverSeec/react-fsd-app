@@ -2,6 +2,7 @@ import { useActionState } from "react";
 import { EMAIL_SCHEMA, PASSWORD_SCHEMA } from "../config/config.ts";
 import cn from "./AuthPage.module.css";
 import classNames from "classnames";
+import { useAuth, type UserResponse } from "features/authRouting";
 
 interface FormState {
   email: string;
@@ -11,20 +12,20 @@ interface FormState {
   success: boolean;
 }
 
+/* Добавил логин/пароль для удобства, тк он всегда один */
 const initialState: FormState = {
-  email: "",
-  password: "",
+  email: "admin@gmail.com",
+  password: "administrator",
   step: 1,
   error: null,
   success: false,
 };
 
-async function submitForm(
+async function onLogin(
   prevState: FormState,
   formData: FormData,
+  login: (email: string, password: string) => Promise<UserResponse>,
 ): Promise<FormState> {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
   try {
     if (prevState.step === 1) {
       const email = formData.get("email") as string;
@@ -41,6 +42,8 @@ async function submitForm(
       const password = formData.get("password") as string;
 
       PASSWORD_SCHEMA.parse({ password });
+
+      await login(prevState.email, password);
 
       return {
         ...prevState,
@@ -59,8 +62,9 @@ async function submitForm(
 }
 
 export function AuthPage() {
-  const [state, formAction, isPending] = useActionState(
-    submitForm,
+  const { login } = useAuth();
+  const [state, formAction, isPending] = useActionState<FormState, FormData>(
+    (state, payload) => onLogin(state, payload, login),
     initialState,
   );
 
@@ -153,6 +157,7 @@ export function AuthPage() {
               id="password"
               type="password"
               name="password"
+              defaultValue={state.password}
               className={`${cn.input} ${state.error ? cn.inputError : ""}`}
               placeholder="Введите ваш пароль"
               required
