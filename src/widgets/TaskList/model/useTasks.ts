@@ -4,13 +4,15 @@ import { useGetTasksQuery } from "entities/Task";
 export type Filter = "all" | "completed" | "incomplete";
 
 export function useTasks() {
-  const { data: initialTasks = [] } = useGetTasksQuery();
+  const { data: initialTasks } = useGetTasksQuery();
 
-  const [tasks, setTasks] = useState(initialTasks);
+  const [tasks, setTasks] = useState(initialTasks ? initialTasks : []);
   const [filter, setFilter] = useState<Filter>("all");
 
   useEffect(() => {
-    setTasks(initialTasks);
+    if (initialTasks) {
+      setTasks(initialTasks);
+    }
   }, [initialTasks]);
 
   /* Добавил в TASK-1*/
