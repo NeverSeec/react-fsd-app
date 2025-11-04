@@ -1,0 +1,35 @@
+.container {
+    padding: 20px;
+}
+
+.header {
+    margin-bottom: 30px;
+}
+
+
+.profileCard {
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.infoSection {
+    padding: 30px;
+}
+
+.infoGrid {
+    display: grid;
+    gap: 20px;
+}
+
+.infoItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+
+
+
