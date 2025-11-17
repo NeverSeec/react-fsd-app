@@ -1,26 +1,26 @@
 .tooltip {
     position: fixed;
-    background: #333;
-    color: white;
     padding: 8px 12px;
     border-radius: 6px;
-    font-size: 14px;
-    line-height: 1.4;
     max-width: 300px;
     white-space: nowrap;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     pointer-events: none;
-    animation: fadeIn 0.15s ease-out;
     z-index: 9999;
 }
 
-.tooltip::before {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
+.tooltip-light {
+    background: white;
+    color: black;
+    border: 1px solid #e0e0e0;
 }
+
+.tooltip-dark {
+    background: #2d2d2d;
+    color: white;
+    border: 1px solid #555;
+}
+
 
 .container {
     display: inline-block;

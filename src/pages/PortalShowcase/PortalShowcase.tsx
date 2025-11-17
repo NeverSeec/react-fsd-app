@@ -1,8 +1,10 @@
 import { Tooltip, TooltipPosition } from "shared/ui/Tooltip";
 import { useConfirmDialog } from "shared/ui/ConfirmDialog";
+import { useTheme } from "shared/ui/Theme";
 
 export function PortalShowcase() {
   const { showConfirmDialog, ConfirmDialog } = useConfirmDialog();
+  const { toggleTheme, theme } = useTheme();
   return (
     <div
       style={{
@@ -14,6 +16,7 @@ export function PortalShowcase() {
         width: "100%",
       }}
     >
+      <button onClick={toggleTheme}>Тема: {theme}</button>
       {ConfirmDialog}
       <Tooltip content={"Тултип"} placement={TooltipPosition.BOTTOM}>
         <button

@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { createPortal } from "react-dom";
-import styles from "./ConfirmDialog.module.css";
+import cn from "./ConfirmDialog.module.css";
+import { useTheme } from "shared/ui/Theme";
+import classNames from "classnames";
 
 interface ConfirmDialogProps {
   isOpen: boolean;
@@ -19,6 +21,8 @@ export const ConfirmDialog = ({
   onConfirm,
   onCancel,
 }: ConfirmDialogProps) => {
+  const { theme } = useTheme();
+
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -56,12 +60,12 @@ export const ConfirmDialog = ({
   };
 
   return createPortal(
-    <div className={styles.overlay} onClick={handleOverlayClick}>
-      <div className={styles.dialog}>
-        <div className={styles.content}>
+    <div className={cn.overlay} onClick={handleOverlayClick}>
+      <div className={classNames(cn.dialog, cn[`dialog-${theme}`])}>
+        <div className={cn.content}>
           <h2>{title}</h2>
           <p>{description}</p>
-          <div className={styles.actions}>
+          <div className={cn.actions}>
             <button onClick={handleCancel} autoFocus>
               Отмена
             </button>

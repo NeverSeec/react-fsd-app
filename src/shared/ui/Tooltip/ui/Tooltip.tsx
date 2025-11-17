@@ -2,6 +2,8 @@ import { createPortal } from "react-dom";
 import { useMemo, useRef, useState, useEffect, useCallback } from "react";
 import cn from "./Tooltip.module.css";
 import { TooltipPosition } from "../lib/TooltipPosition.ts";
+import classNames from "classnames";
+import { useTheme } from "shared/ui/Theme";
 
 export interface TooltipProps {
   placement?: TooltipPosition;
@@ -23,6 +25,7 @@ export function Tooltip({
   disabled = false,
   className = "",
 }: TooltipProps) {
+  const { theme } = useTheme();
   const triggerRef = useRef<HTMLDivElement>(null);
   const [tooltipRef, setTooltipRef] = useState<HTMLDivElement | null>(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -146,7 +149,6 @@ export function Tooltip({
     setIsOpen(false);
   };
 
-  console.log(position);
   return (
     <>
       <div
@@ -154,7 +156,6 @@ export function Tooltip({
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         ref={triggerRef}
-        style={{ display: "inline-block" }}
       >
         {children}
       </div>
@@ -165,7 +166,11 @@ export function Tooltip({
           <div
             ref={setTooltipRef}
             style={position}
-            className={`${cn.tooltip} ${className}`}
+            className={classNames(
+              cn.tooltip,
+              cn[`tooltip-${theme}`],
+              className,
+            )}
             onMouseEnter={onTooltipMouseEnter}
             onMouseLeave={onTooltipMouseLeave}
           >
