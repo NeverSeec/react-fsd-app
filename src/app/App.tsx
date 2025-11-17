@@ -13,27 +13,25 @@ import { ThemeProvider } from "shared/ui/Theme";
 
 function App() {
   return (
-      <ThemeProvider>
-
+    <ThemeProvider>
       <Router>
-      <AuthProvider>
-        <Provider store={store}>
-          <Routes>
+        <AuthProvider>
+          <Provider store={store}>
+            <Routes>
               <Route path="/portal" element={<PortalShowcase />} />
               <Route path="/login" element={<AuthPage />} />
-            <Route path="/public" element={<PublicPage />} />
-            <Route path="/" element={<RegisterPage />} />
-            <Route element={<ProtectedRoute />}>
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path="/tasks" element={<TaskPage />} />
-              <Route path="/ref-examples" element={<RefExamplePage />} />
-            </Route>
-          </Routes>
-        </Provider>
-      </AuthProvider>
-    </Router>
-      </ThemeProvider>
-
+              <Route path="/public" element={<PublicPage />} />
+              <Route path="/" element={<RegisterPage />} />
+              <Route element={<ProtectedRoute />}>
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/tasks" element={<TaskPage />} />
+                <Route path="/ref-examples" element={<RefExamplePage />} />
+              </Route>
+            </Routes>
+          </Provider>
+        </AuthProvider>
+      </Router>
+    </ThemeProvider>
   );
 }
 
