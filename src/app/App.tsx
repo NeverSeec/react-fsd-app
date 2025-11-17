@@ -3,6 +3,7 @@ import { TaskPage } from "pages/TaskPage";
 import { RegisterPage } from "pages/RegisterPage";
 import { AuthPage } from "pages/AuthPage";
 import { RefExamplePage } from "pages/RefExamplePage";
+import { PortalShowcase } from "pages/PortalShowcase";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/tasks" element={<TaskPage />} />
         <Route path="/ref-examples" element={<RefExamplePage />} />
+        <Route path="/portal" element={<PortalShowcase />} />
       </Routes>
     </Router>
   );
