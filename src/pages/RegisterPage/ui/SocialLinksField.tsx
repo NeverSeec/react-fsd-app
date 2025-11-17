@@ -6,6 +6,7 @@ import {
 } from "react-hook-form";
 import cn from "./RegisterPage.module.css";
 import type { RegisterFormData } from "../model/types.ts";
+import { Tooltip } from "shared/ui/Tooltip";
 
 interface SocialLinksFieldProps {
   control: Control<RegisterFormData>;
@@ -58,14 +59,15 @@ export function SocialLinksField({
           </div>
         </div>
       ))}
-
-      <button
-        type="button"
-        onClick={() => append({ url: "" })}
-        className={cn.buttonSuccess}
-      >
-        Добавить ссылку
-      </button>
+      <Tooltip content={"Тултип"}>
+        <button
+          type="button"
+          onClick={() => append({ url: "" })}
+          className={cn.buttonSuccess}
+        >
+          Добавить ссылку
+        </button>
+      </Tooltip>
     </div>
   );
 }
