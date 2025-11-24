@@ -23,9 +23,9 @@ function App() {
               <Route path="/login" element={<AuthPage />} />
               <Route path="/public" element={<PublicPage />} />
               <Route path="/" element={<RegisterPage />} />
-                <Route path="/react-19" element={<React19ExamplesPage />} />
+              <Route path="/react-19" element={<React19ExamplesPage />} />
 
-                <Route element={<ProtectedRoute />}>
+              <Route element={<ProtectedRoute />}>
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/tasks" element={<TaskPage />} />
                 <Route path="/ref-examples" element={<RefExamplePage />} />
