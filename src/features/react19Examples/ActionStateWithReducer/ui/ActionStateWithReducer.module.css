@@ -1,0 +1,20 @@
+.container {
+    max-width: 400px;
+    padding: 24px;
+    background-color: white;
+    border-radius: 24px;
+    border: 1px solid lightgray;
+}
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}

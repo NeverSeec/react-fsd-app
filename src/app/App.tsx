@@ -10,6 +10,7 @@ import { ProfilePage } from "pages/ProfilePage/ProfilePage.tsx";
 import { PublicPage } from "pages/PublicPage/PublicPage.tsx";
 import { PortalShowcase } from "pages/PortalShowcase";
 import { ThemeProvider } from "shared/ui/Theme";
+import { React19ExamplesPage } from "pages/React19ExamplesPage/React19ExamplesPage.tsx";
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
               <Route path="/login" element={<AuthPage />} />
               <Route path="/public" element={<PublicPage />} />
               <Route path="/" element={<RegisterPage />} />
+              <Route path="/react-19" element={<React19ExamplesPage />} />
+
               <Route element={<ProtectedRoute />}>
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/tasks" element={<TaskPage />} />
