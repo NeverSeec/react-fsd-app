@@ -1,0 +1,29 @@
+.tooltip {
+    position: fixed;
+    padding: 8px 12px;
+    border-radius: 6px;
+    max-width: 300px;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.tooltip-light {
+    background: white;
+    color: black;
+    border: 1px solid #e0e0e0;
+}
+
+.tooltip-dark {
+    background: #2d2d2d;
+    color: white;
+    border: 1px solid #555;
+}
+
+
+.container {
+    display: inline-block;
+    width: fit-content;
+    height: fit-content;
+}
